@@ -8,7 +8,7 @@
     "url": "https://app.amplication.com/cl2sjmtkz106077401s6vod24i8w",
     "settings": {
       "dbHost": "localhost",
-      "dbName": "",
+      "dbName": "demo",
       "dbPassword": "admin",
       "dbPort": 5432,
       "dbUser": "admin",

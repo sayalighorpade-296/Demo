@@ -5,8 +5,9 @@ services:
     ports:
       - "${POSTGRESQL_PORT}:5432"
     environment:
-      POSTGRES_USER: ${POSTGRESQL_USER}
-      POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD}
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_DB: 'demo'
     volumes:
       - postgres:/var/lib/postgresql/data
 volumes:
