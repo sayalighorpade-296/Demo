@@ -3,12 +3,12 @@
   "appInfo": {
     "name": "My app",
     "description": "",
-    "version": "hdlpc6qq",
+    "version": "1gjm55lt",
     "id": "cl2sjmtkz106077401s6vod24i8w",
     "url": "https://app.amplication.com/cl2sjmtkz106077401s6vod24i8w",
     "settings": {
       "dbHost": "localhost",
-      "dbName": "demo",
+      "dbName": "",
       "dbPassword": "admin",
       "dbPort": 5432,
       "dbUser": "admin",
