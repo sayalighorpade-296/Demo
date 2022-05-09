@@ -2,6 +2,8 @@ import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
 import { ProjectModule } from "./project/project.module";
 import { TaskModule } from "./task/task.module";
+import { FarmModule } from "./farm/farm.module";
+import { FarmActivityModule } from "./farmActivity/farmActivity.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -18,6 +20,8 @@ import { GraphQLModule } from "@nestjs/graphql";
     UserModule,
     ProjectModule,
     TaskModule,
+    FarmModule,
+    FarmActivityModule,
     ACLModule,
     AuthModule,
     HealthModule,
