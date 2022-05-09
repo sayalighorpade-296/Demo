@@ -11,9 +11,8 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsDate, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { FarmWhereUniqueInput } from "../../farm/base/FarmWhereUniqueInput";
 @InputType()
 class FarmActivityUpdateInput {
   @ApiProperty({
@@ -37,18 +36,6 @@ class FarmActivityUpdateInput {
     nullable: true,
   })
   description?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => FarmWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => FarmWhereUniqueInput)
-  @IsOptional()
-  @Field(() => FarmWhereUniqueInput, {
-    nullable: true,
-  })
-  farm?: FarmWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

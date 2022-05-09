@@ -47,7 +47,6 @@ model Task {
 
 model Farm {
   createdAt            DateTime                      @default(now())
-  farmActivities       FarmActivity[]
   farmType             EnumFarmFarmType?
   heightArea           Float?
   id                   String                        @id @default(cuid())
@@ -61,8 +60,6 @@ model FarmActivity {
   activityDate DateTime?
   createdAt    DateTime  @default(now())
   description  String?
-  farm         Farm?     @relation(fields: [farmId], references: [id])
-  farmId       String?
   id           String    @id @default(cuid())
   title        String?
   updatedAt    DateTime  @updatedAt

@@ -11,27 +11,14 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FarmActivityListRelationFilter } from "../../farmActivity/base/FarmActivityListRelationFilter";
-import { ValidateNested, IsOptional, IsEnum } from "class-validator";
-import { Type } from "class-transformer";
 import { EnumFarmFarmType } from "./EnumFarmFarmType";
+import { IsEnum, IsOptional } from "class-validator";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumFarmSunlightAvailability } from "./EnumFarmSunlightAvailability";
 @InputType()
 class FarmWhereInput {
-  @ApiProperty({
-    required: false,
-    type: () => FarmActivityListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => FarmActivityListRelationFilter)
-  @IsOptional()
-  @Field(() => FarmActivityListRelationFilter, {
-    nullable: true,
-  })
-  farmActivities?: FarmActivityListRelationFilter;
-
   @ApiProperty({
     required: false,
     enum: EnumFarmFarmType,

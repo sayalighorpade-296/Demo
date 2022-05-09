@@ -13,14 +13,12 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
   IsDate,
-  ValidateNested,
-  IsOptional,
   IsEnum,
+  IsOptional,
   IsNumber,
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { FarmActivity } from "../../farmActivity/base/FarmActivity";
 import { EnumFarmFarmType } from "./EnumFarmFarmType";
 import { EnumFarmSunlightAvailability } from "./EnumFarmSunlightAvailability";
 @ObjectType()
@@ -32,15 +30,6 @@ class Farm {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
-
-  @ApiProperty({
-    required: false,
-    type: () => [FarmActivity],
-  })
-  @ValidateNested()
-  @Type(() => FarmActivity)
-  @IsOptional()
-  farmActivities?: Array<FarmActivity>;
 
   @ApiProperty({
     required: false,
