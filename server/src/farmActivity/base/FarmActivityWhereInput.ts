@@ -13,9 +13,8 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { FarmWhereUniqueInput } from "../../farm/base/FarmWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 @InputType()
 class FarmActivityWhereInput {
@@ -40,18 +39,6 @@ class FarmActivityWhereInput {
     nullable: true,
   })
   description?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => FarmWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => FarmWhereUniqueInput)
-  @IsOptional()
-  @Field(() => FarmWhereUniqueInput, {
-    nullable: true,
-  })
-  farm?: FarmWhereUniqueInput;
 
   @ApiProperty({
     required: false,

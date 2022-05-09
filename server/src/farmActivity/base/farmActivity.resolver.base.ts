@@ -27,7 +27,6 @@ import { DeleteFarmActivityArgs } from "./DeleteFarmActivityArgs";
 import { FarmActivityFindManyArgs } from "./FarmActivityFindManyArgs";
 import { FarmActivityFindUniqueArgs } from "./FarmActivityFindUniqueArgs";
 import { FarmActivity } from "./FarmActivity";
-import { Farm } from "../../farm/base/Farm";
 import { FarmActivityService } from "../farmActivity.service";
 
 @graphql.Resolver(() => FarmActivity)
@@ -100,15 +99,7 @@ export class FarmActivityResolverBase {
     // @ts-ignore
     return await this.service.create({
       ...args,
-      data: {
-        ...args.data,
-
-        farm: args.data.farm
-          ? {
-              connect: args.data.farm,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
@@ -127,15 +118,7 @@ export class FarmActivityResolverBase {
       // @ts-ignore
       return await this.service.update({
         ...args,
-        data: {
-          ...args.data,
-
-          farm: args.data.farm
-            ? {
-                connect: args.data.farm,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -167,21 +150,5 @@ export class FarmActivityResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Farm, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Farm",
-    action: "read",
-    possession: "any",
-  })
-  async farm(@graphql.Parent() parent: FarmActivity): Promise<Farm | null> {
-    const result = await this.service.getFarm(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

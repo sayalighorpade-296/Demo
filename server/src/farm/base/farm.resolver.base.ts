@@ -27,8 +27,6 @@ import { DeleteFarmArgs } from "./DeleteFarmArgs";
 import { FarmFindManyArgs } from "./FarmFindManyArgs";
 import { FarmFindUniqueArgs } from "./FarmFindUniqueArgs";
 import { Farm } from "./Farm";
-import { FarmActivityFindManyArgs } from "../../farmActivity/base/FarmActivityFindManyArgs";
-import { FarmActivity } from "../../farmActivity/base/FarmActivity";
 import { FarmService } from "../farm.service";
 
 @graphql.Resolver(() => Farm)
@@ -144,25 +142,5 @@ export class FarmResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [FarmActivity])
-  @nestAccessControl.UseRoles({
-    resource: "FarmActivity",
-    action: "read",
-    possession: "any",
-  })
-  async farmActivities(
-    @graphql.Parent() parent: Farm,
-    @graphql.Args() args: FarmActivityFindManyArgs
-  ): Promise<FarmActivity[]> {
-    const results = await this.service.findFarmActivities(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
   }
 }

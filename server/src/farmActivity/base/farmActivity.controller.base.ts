@@ -54,26 +54,11 @@ export class FarmActivityControllerBase {
     @common.Body() data: FarmActivityCreateInput
   ): Promise<FarmActivity> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        farm: data.farm
-          ? {
-              connect: data.farm,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
         activityDate: true,
         createdAt: true,
         description: true,
-
-        farm: {
-          select: {
-            id: true,
-          },
-        },
-
         id: true,
         title: true,
         updatedAt: true,
@@ -104,13 +89,6 @@ export class FarmActivityControllerBase {
         activityDate: true,
         createdAt: true,
         description: true,
-
-        farm: {
-          select: {
-            id: true,
-          },
-        },
-
         id: true,
         title: true,
         updatedAt: true,
@@ -142,13 +120,6 @@ export class FarmActivityControllerBase {
         activityDate: true,
         createdAt: true,
         description: true,
-
-        farm: {
-          select: {
-            id: true,
-          },
-        },
-
         id: true,
         title: true,
         updatedAt: true,
@@ -184,26 +155,11 @@ export class FarmActivityControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          farm: data.farm
-            ? {
-                connect: data.farm,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
           activityDate: true,
           createdAt: true,
           description: true,
-
-          farm: {
-            select: {
-              id: true,
-            },
-          },
-
           id: true,
           title: true,
           updatedAt: true,
@@ -243,13 +199,6 @@ export class FarmActivityControllerBase {
           activityDate: true,
           createdAt: true,
           description: true,
-
-          farm: {
-            select: {
-              id: true,
-            },
-          },
-
           id: true,
           title: true,
           updatedAt: true,

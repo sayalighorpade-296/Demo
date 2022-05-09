@@ -11,9 +11,8 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsDate, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { Farm } from "../../farm/base/Farm";
 @ObjectType()
 class FarmActivity {
   @ApiProperty({
@@ -45,15 +44,6 @@ class FarmActivity {
     nullable: true,
   })
   description!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Farm,
-  })
-  @ValidateNested()
-  @Type(() => Farm)
-  @IsOptional()
-  farm?: Farm | null;
 
   @ApiProperty({
     required: true,
