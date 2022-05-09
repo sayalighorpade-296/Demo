@@ -45,9 +45,44 @@ model Task {
   updatedAt      DateTime        @updatedAt
 }
 
+model Farm {
+  createdAt            DateTime                      @default(now())
+  farmActivities       FarmActivity[]
+  farmType             EnumFarmFarmType?
+  heightArea           Float?
+  id                   String                        @id @default(cuid())
+  lengthArea           Float?
+  sunlightAvailability EnumFarmSunlightAvailability?
+  updatedAt            DateTime                      @updatedAt
+  widthArea            Float?
+}
+
+model FarmActivity {
+  activityDate DateTime?
+  createdAt    DateTime  @default(now())
+  description  String?
+  farm         Farm?     @relation(fields: [farmId], references: [id])
+  farmId       String?
+  id           String    @id @default(cuid())
+  title        String?
+  updatedAt    DateTime  @updatedAt
+}
+
 enum EnumTaskStatus {
   New
   Pending
   Ongoing
   Done
+}
+
+enum EnumFarmFarmType {
+  Terrace
+  Farm
+  Garden
+}
+
+enum EnumFarmSunlightAvailability {
+  Low
+  Medium
+  High
 }
